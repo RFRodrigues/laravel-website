@@ -17,4 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teste/{view}', 'TestController@show');
+Route::get('/form', 'TestController@form');
+
+Route::get('/home', 'TestController@home');
+
+Route::post('/form/submit', 'TestController@submitForm');
+
+Route::get('/{default?}', 'TestController@notFound');
+
+
