@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use App\User;
 
-use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController
 {
@@ -23,13 +24,38 @@ class MainController
 
     public function submitForm(Request $request)
     {
-        try {
-            DB::table('users')->insert(
-                ['email' => $request->input('email'), 'age' => $request->input('age'), 'name' => $request->old('name') ?? 'Utilizador anónimo']
-            );
-        } catch (Exception $e) {
-            dd($e->getMessage());
-        }
+
+        $request->validate([
+            'name'  => 'required',
+            'email' => 'required|email',
+            'age'   => 'required|integer|min:18',
+        ]);
+        dd('ping');
+        
+        // try {
+
+            $user = new User;
+            $user->name = $request->old('name');
+            $user->email = $request->email;
+            $user->age = $request->age;
+            // $user->save();
+
+            dd($user->save());
+
+            // User::create([
+            //     'name' => $request->name,
+            //     'email' => $request->email,
+            //     'age' => $request->age,
+            //     'password' => 'teste'
+            // ]);
+
+
+            // DB::table('users')->insert(
+            //     ['email' => $request->input('email'), 'age' => $request->input('age'), 'name' => $request->old('name') ?? 'Utilizador anónimo']
+            // );
+        // } catch (Exception $e) {
+        //     dd($e->getMessage());
+        // }
 
         return view('submited');
     }

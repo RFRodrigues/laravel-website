@@ -29,6 +29,6 @@ Route::put('/usersList/update/{id}', 'MainController@updateUser');
 
 Route::delete('/usersList/delete/{id}', 'MainController@deleteUser');
 
-Route::get('/{default?}', 'MainController@notFound');
+// Route::get('/{default?}', 'MainController@notFound');
 
 
