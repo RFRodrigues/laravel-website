@@ -1,0 +1,28 @@
+@tailwind base;
+
+@tailwind components;
+.link{
+    @apply bg-red-500 px-4;
+}
+input[type="submit"], a {
+    @apply bg-gray-700 text-sm cursor-pointer text-white py-1 px-2 my-2 rounded;
+}
+input[type="submit"]:hover, a:hover {
+    @apply bg-gray-800;
+}
+input[type="submit"]:focus, a:focus {
+    @apply outline-none shadow-outline;
+}
+input[type="text"]:not(.inputBox), input[type="email"]:not(.inputBox), input[type="number"]:not(.inputBox) {
+    @apply bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal;
+}
+input[type="text"]:not(.inputBox):focus, input[type="email"]:not(.inputBox):focus, input[type="number"]:not(.inputBox):focus {
+    @apply outline-none shadow-outline;
+}
+
+tr:focus .inputBox, tr .inputBox:focus  {
+    @apply bg-white border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal;
+}
+
+
+@tailwind utilities;

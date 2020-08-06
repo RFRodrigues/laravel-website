@@ -3,18 +3,20 @@
 @section ('header')
 
 
-<p>Olá {{ $name ?? 'Utilizador anónimo' }}</p>
+
 
 
 @endsection
 
 @section ('content')
-
-<form action="/form/submit" method="POST">
-    @csrf
-    <input class="block" type="number" min="0" name="age" placeholder="Insert your age">
-    <input class="block" type="email" name="email" placeholder="Insert your email">
-    <input class="block" type="submit" value="Submit">
-</form>
+<div class="absolute inset-0 flex items-center justify-center bg-gray-300">
+    <form action="/form/submit" method="POST">
+        @csrf
+        <p class="text-center">Olá {{ $name ?? 'Utilizador anónimo' }}</p>
+        <input type="number" min="0" name="age" placeholder="Insert age">
+        <input class="my-2" type="email" name="email" placeholder="Insert email">
+        <div class="text-center"><input type="submit" value="Submit"></div>
+    </form>
+</div>
 
 @endsection

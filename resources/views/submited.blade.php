@@ -4,10 +4,9 @@
 @section ('content')
 
 
-            <div class="block">
-                <h3>User submited with success!</h3>
-            </div>
-            <a href="/home">Submit another user</a> 
-
+<div class="absolute inset-0 flex flex-col items-center justify-center bg-gray-300">
+    <h3>User submited with success!</h3>
+    <a href="/usersList">Users List</a>
+</div>
 
 @endsection

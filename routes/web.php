@@ -17,12 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', 'TestController@form');
+Route::get('/form', 'MainController@form');
 
-Route::get('/home', 'TestController@home');
+Route::get('/addUser', 'MainController@addUsernameForm');
 
-Route::post('/form/submit', 'TestController@submitForm');
+Route::get('/usersList', 'MainController@getUsers');
 
-Route::get('/{default?}', 'TestController@notFound');
+Route::post('/form/submit', 'MainController@submitForm');
+
+Route::put('/usersList/update/{id}', 'MainController@updateUser');
+
+Route::delete('/usersList/delete/{id}', 'MainController@deleteUser');
+
+Route::get('/{default?}', 'MainController@notFound');
 
 
