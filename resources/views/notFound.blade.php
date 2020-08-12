@@ -6,4 +6,4 @@
     <h3>404 | not found</h3>
     <a href="/usersList">Go back to home page</a>
 </div>
-@endsection
+@stop

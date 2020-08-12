@@ -6,7 +6,7 @@
 
 
 
-@endsection
+@stop
 
 @section ('content')
 @foreach($errors->all() as $error)
@@ -25,4 +25,4 @@
     </form>
 </div>
 
-@endsection
+@stop

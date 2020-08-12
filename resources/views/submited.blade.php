@@ -9,4 +9,4 @@
     <a href="/usersList">Users List</a>
 </div>
 
-@endsection
+@stop

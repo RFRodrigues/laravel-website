@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Role;
 
 use Exception;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class MainController
 
     public function form(Request $request)
     {
-        $request->flash();
+        //$request->flash();
         return view('form')->with('name', $request->name);
     }
 
@@ -38,9 +39,9 @@ class MainController
             $user->name = $request->old('name');
             $user->email = $request->email;
             $user->age = $request->age;
-            // $user->save();
+            $user->save();
 
-            dd($user->save());
+            //dd($user->save());
 
             // User::create([
             //     'name' => $request->name,
@@ -60,11 +61,12 @@ class MainController
         return view('submited');
     }
 
-    public function getUsers(Request $request)
+    public function getUsers()
     {
         try {
-            $users = DB::table('users')->get();
-            //dd($users);
+            $users = User::all();
+            $roles = Role::all();
+            //dd($users->role);
         } catch (Exception $e) {
             dd($e->getMessage());
         }
@@ -72,11 +74,11 @@ class MainController
         return view('usersList')->with('users', $users);
     }
 
-    public function deleteUser(Request $request, $id)
+    public function deleteUser($id)
     {
-        //dd($request);
         try {
-            DB::table('users')->where('id', '=', $id)->delete();
+            $user = User::find($id);
+            $user->delete();
         } catch (Exception $e) {
             dd($e->getMessage());
         }
@@ -87,16 +89,18 @@ class MainController
     {
         //dd($request->input('name'));
         try {
-            DB::table('users')
-                ->where('id', $id)
-                ->update(['name' => $request->input('name'), 'email' => $request->input('email'), 'age' => $request->input('age')]);
+            $user = User::find($id);
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->age = $request->input('age');
+            $user->save();
         } catch (Exception $e) {
             dd($e->getMessage());
         }
         return redirect('usersList');
     }
 
-    public function notFound(Request $request)
+    public function notFound()
     {
         return view('notFound');
     }

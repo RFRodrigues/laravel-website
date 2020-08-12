@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +18,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', 'MainController@form');
+Route::get('/form', 'MainController@form')->middleware('auth');
 
-Route::get('/addUser', 'MainController@addUsernameForm');
+Route::get('/addUser', 'MainController@addUsernameForm')->middleware('auth');
 
 Route::get('/usersList', 'MainController@getUsers');
 
-Route::post('/form/submit', 'MainController@submitForm');
+Route::post('/form/submit', 'MainController@submitForm')->middleware('auth');
 
-Route::put('/usersList/update/{id}', 'MainController@updateUser');
+Route::put('/usersList/update/{id}', 'MainController@updateUser')->middleware('auth');
 
-Route::delete('/usersList/delete/{id}', 'MainController@deleteUser');
+Route::delete('/usersList/delete/{id}', 'MainController@deleteUser')->middleware('auth');
 
 // Route::get('/{default?}', 'MainController@notFound');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
