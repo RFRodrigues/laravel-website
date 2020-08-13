@@ -22,13 +22,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/getUsers', function (Request $request) {
-    return User::all();
+    try{
+        $users = User::all();
+    }
+    catch (Exception $e) {
+        dd($e->getMessage());
+    }
+    return $users;
 });
 
 Route::get('/getUsers/{id}', function (Request $request) {
-    return User::find($request->id);
+    try{
+        $user = User::find($request->id);
+    }
+    catch (Exception $e) {
+        dd($e->getMessage());
+    }
+    return $user;
 });
 
 Route::get('/getRoles', function (Request $request) {
-    return Role::all();
+    try{
+        $roles = Role::all();
+    }
+    catch (Exception $e) {
+        dd($e->getMessage());
+    }
+    return $roles;
 });

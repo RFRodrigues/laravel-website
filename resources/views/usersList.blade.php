@@ -27,7 +27,7 @@
                         <td class="p-3 px-5"><input type="text" name="name" value="{{ $user->name }}" class="inputBox bg-transparent w-full"></td>
                         <td class="p-3 px-5"><input type="email" name="email" value="{{ $user->email }}" class="inputBox bg-transparent w-full"></td>
                         <td class="p-3 px-5"><input type="number" name="age" value="{{ $user->age }}" class="inputBox bg-transparent"></td>
-                        <td class="p-3 px-5"><input disabled type="text" name="role" value="{{ $user->role }}" class="inputBox bg-transparent"></td>
+                        <!-- <td class="p-3 px-5"><input disabled type="text" name="role" value="" class="inputBox bg-transparent"></td> -->
                         <td class="p-3 px-5 flex justify-end">
                             <button type="submit" class="mr-3 text-sm bg-blue-600 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Save</button>
                     </form>

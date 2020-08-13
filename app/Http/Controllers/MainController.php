@@ -7,6 +7,7 @@ use App\Role;
 
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 
 class MainController
@@ -64,14 +65,15 @@ class MainController
     public function getUsers()
     {
         try {
-            $users = User::all();
-            $roles = Role::all();
-            //dd($users->role);
+            $request = Request::create('/api/getUsers', 'GET');
+            $response = Route::dispatch($request);
+            // $users = User::all();
+            //dd($response->getData());
         } catch (Exception $e) {
             dd($e->getMessage());
         }
 
-        return view('usersList')->with('users', $users);
+        return view('usersList')->with('users', $response->getData());
     }
 
     public function deleteUser($id)
